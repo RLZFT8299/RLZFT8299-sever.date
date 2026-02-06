@@ -171,15 +171,31 @@
             text-align: center;
         }
         
-        .new-sidebar-info {
-            margin-top: 5px;
+        .new-sidebar-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
         
-        .new-sidebar-info p {
+        .new-sidebar-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .new-sidebar-stat-label {
             color: var(--text-light);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .new-sidebar-stat-value {
+            color: var(--gradient-blue-1);
+            font-weight: 700;
+            font-size: 1.1rem;
         }
         
         /* 遮罩层 */
@@ -773,6 +789,7 @@
         </div>
         
         <div class="new-sidebar-content">
+            <!--- 快捷链接更改 -->
             <div class="new-sidebar-section">
                 <h3><i class="fas fa-link"></i> 快捷链接</h3>
                 <ul class="new-sidebar-links">
@@ -783,7 +800,25 @@
                     <li><a href="#contact" data-section="contact"><i class="fas fa-envelope"></i> 联系我</a></li>
                 </ul>
             </div>
-            
+            <!--- 重要数据更改 -->
+            <div class="new-sidebar-section">
+                <h3><i class="fas fa-rocket"></i> 重要数据</h3>
+                <div class="new-sidebar-stats">
+                    <div class="new-sidebar-stat">
+                        <span class="new-sidebar-stat-label">皮肤总数</span>
+                        <span class="new-sidebar-stat-value">4</span>
+                    </div>
+                    <div class="new-sidebar-stat">
+                        <span class="new-sidebar-stat-label">总下载量</span>
+                        <span class="new-sidebar-stat-value">2,847</span>
+                    </div>
+                    <div class="new-sidebar-stat">
+                        <span class="new-sidebar-stat-label">使用人数</span>
+                        <span class="new-sidebar-stat-value">692</span>
+                    </div>
+                </div>
+            </div>
+            <!--- 外部链接更改 -->
             <div class="new-sidebar-section">
                 <h3><i class="fas fa-external-link-alt"></i> 外部链接</h3>
                 <ul class="new-sidebar-links">
@@ -793,15 +828,13 @@
                     <li><a href="https://space.bilibili.com/1437096187" target="_blank"><i class="fab fa-bilibili"></i> B站主页</a></li>
                 </ul>
             </div>
-            
+            <!-- 网站信息更改 -->
             <div class="new-sidebar-section">
                 <h3><i class="fas fa-info-circle"></i> 网站信息</h3>
-                <div class="new-sidebar-info">
-                    <p>这是一个展示个人作品和技术的网站，主要包含我的世界相关内容和技术分享。</p>
-                    <div style="margin-top: 15px; padding: 10px; background: rgba(52, 152, 219, 0.1); border-radius: 8px; border-left: 3px solid var(--gradient-blue-2);">
-                        <p style="color: var(--gradient-blue-1); font-size: 0.85rem; font-weight: 600;">开发状态</p>
-                        <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 5px;">持续更新中...</p>
-                    </div>
+                <p style="color: var(--text-light); font-size: 0.9rem; line-height: 1.5;">这是一个展示个人作品和技术的网站，主要包含我的世界相关内容和技术分享。</p>
+                <div style="margin-top: 15px; padding: 10px; background: rgba(52, 152, 219, 0.1); border-radius: 8px; border-left: 3px solid var(--gradient-blue-2);">
+                    <p style="color: var(--gradient-blue-1); font-size: 0.85rem; font-weight: 600;">开发状态</p>
+                    <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 5px;">持续更新中...</p>
                 </div>
             </div>
         </div>
@@ -818,7 +851,7 @@
             <p class="tagline">欢迎来到我的个人网站，这里展示我的技术作品！</p>
         </div>
     </header>
-    
+    <!-- 导航栏 -->
     <div class="container">
         <nav>
             <ul class="nav-links">
@@ -829,7 +862,7 @@
                 <li><a href="#contact" data-section="contact">联系我</a></li>
             </ul>
         </nav>
-        
+        <!--- 主要内容区1 -->
         <div class="main-content">
             <aside class="sidebar">
                 <div class="profile">
@@ -897,7 +930,7 @@
                             <button class="btn" onclick="window.open('http://lhy.cpolar.top', '_blank')" style="background: linear-gradient(135deg, var(--forum-orange), var(--forum-light-orange));">进入论坛</button>
                         </div>
                     </div>
-                    
+                    <!-- 最新动态内容 -->
                     <div class="content-card">
                         <h3><i class="fas fa-bell"></i> "不新动态"</h3>
                         
@@ -1116,23 +1149,30 @@
                         <p></p>
                         
                         <div class="section-divider"></div>
-                        
+                        <!--信息位置-->
                         <div style="margin-top: 2rem;">
                             <h4 style="color: var(--gradient-blue-1); margin-bottom: 1.5rem;">这里什么都没有!</h4>
                             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
                                 <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(26, 41, 128, 0.05), rgba(38, 208, 206, 0.05)); border-radius: var(--border-radius); border: 1px solid rgba(52, 152, 219, 0.1);">
                                     <h5 style="color: var(--gradient-blue-1); margin-bottom: 0.8rem; display: flex; align-items: center;">
-                                        <i class="fas fa-laptop-code" style="margin-right: 10px; color: var(--gradient-blue-2);"></i> Web开发
+                                        <i class="fas fa-laptop-code" style="margin-right: 10px; color: var(--gradient-blue-2);"></i> ?
                                     </h5>
                                     <p style="color: var(--text-light);">"此内容还没想好，请等待后续更新"</p>
                                 </div>
                                 
                                 <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(26, 41, 128, 0.05), rgba(38, 208, 206, 0.05)); border-radius: var(--border-radius); border: 1px solid rgba(52, 152, 219, 0.1);">
                                     <h5 style="color: var(--gradient-blue-1); margin-bottom: 0.8rem; display: flex; align-items: center;">
-                                        <i class="fas fa-paint-brush" style="margin-right: 10px; color: var(--gradient-blue-2);"></i> 皮肤设计
+                                        <i class="fas fa-paint-brush" style="margin-right: 10px; color: var(--gradient-blue-2);"></i>?
                                     </h5>
                                     <p style="color: var(--text-light);">"此内容还没想好，请等待后续更新"</p>
                                 </div>
+
+                                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(26, 41, 128, 0.05), rgba(38, 208, 206, 0.05)); border-radius: var(--border-radius); border: 1px solid rgba(52, 152, 219, 0.1);">
+                                    <h5 style="color: var(--gradient-blue-1); margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                        <i class="fas fa-tools" style="margin-right: 10px; color: var(--gradient-blue-2);"></i> ?
+                                    </h5>
+                                    <p style="color: var(--text-light);">"此内容还没想好，请等待后续更新"</p>
+                                </div>    
                             </div>
                         </div>
                     </div>
@@ -1168,7 +1208,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <!-- 联系表单 -->
                     <div class="content-card">
                         <h3><i class="fas fa-paper-plane"></i> 发送消息</h3>
                         <form class="contact-form">
@@ -1201,16 +1241,16 @@
     </div>
     
     <footer>
+        <!-- 页脚内容 -->
         <div class="container">
             <div class="footer-links">
                 <a href="#" data-section="home">首页</a>
                 <a href="#" data-section="minecraft">我的世界专栏</a>
                 <a href="#" data-section="forum">论坛</a>
-                <a herf="http://lhy.cpolar.top" target="_blank">老李论坛</a>
-                <a href="https://littleskin.cn" target="_blank">LittleSkin官网</a>
+                <a href="http://lhy.cpolar.top" target="_blank">老李论坛</a>
+                <a href="https://github.com/RLZFT8299/RLZFT8299-sever.date" target="_blank">GitHub主页</a>
                 <a href="https://minecraft.net" target="_blank">我的世界官网</a>
             </div>
-            
             <div style="margin: 2rem 0;">
                 <div style="display: flex; justify-content: center; gap: 15px;">
                     <div style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--gradient-blue-1), var(--gradient-blue-2)); border-radius: 8px; opacity: 0.8;"></div>
@@ -1218,7 +1258,7 @@
                     <div style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--gradient-blue-1), var(--gradient-blue-4)); border-radius: 8px; opacity: 0.8;"></div>
                 </div>
             </div>
-            
+            <!-- 版权信息 -->
             <p class="copyright">© 2025-2035日落在福田个人站 保留所有权利 </p>
             <p class="copyright" style="margin-top: 0.8rem;">网站采用渐变蓝色设计，背景图片来自 Unsplash</p>
         </div>
