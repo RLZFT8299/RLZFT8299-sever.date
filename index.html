@@ -221,7 +221,6 @@
         header {
             background: 
                 linear-gradient(135deg, rgba(26, 41, 128, 0.85), rgba(38, 208, 206, 0.85)),
-                /*背景*/
                 url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
@@ -789,7 +788,7 @@
         </div>
         
         <div class="new-sidebar-content">
-            <!--- 快捷链接更改 -->
+            <!-- 快捷链接更改 -->
             <div class="new-sidebar-section">
                 <h3><i class="fas fa-link"></i> 快捷链接</h3>
                 <ul class="new-sidebar-links">
@@ -800,7 +799,7 @@
                     <li><a href="#contact" data-section="contact"><i class="fas fa-envelope"></i> 联系我</a></li>
                 </ul>
             </div>
-            <!--- 重要数据更改 -->
+            <!-- 重要数据更改 -->
             <div class="new-sidebar-section">
                 <h3><i class="fas fa-rocket"></i> 重要数据</h3>
                 <div class="new-sidebar-stats">
@@ -818,7 +817,7 @@
                     </div>
                 </div>
             </div>
-            <!--- 外部链接更改 -->
+            <!-- 外部链接更改 -->
             <div class="new-sidebar-section">
                 <h3><i class="fas fa-external-link-alt"></i> 外部链接</h3>
                 <ul class="new-sidebar-links">
@@ -862,7 +861,7 @@
                 <li><a href="#contact" data-section="contact">联系我</a></li>
             </ul>
         </nav>
-        <!--- 主要内容区1 -->
+        <!-- 主要内容区1 -->
         <div class="main-content">
             <aside class="sidebar">
                 <div class="profile">
@@ -1241,14 +1240,14 @@
     </div>
     
     <footer>
-        <!-- 页脚内容 -->
+        <!-- 页脚内容已修复 -->
         <div class="container">
             <div class="footer-links">
                 <a href="#" data-section="home">首页</a>
                 <a href="#" data-section="minecraft">我的世界专栏</a>
                 <a href="#" data-section="forum">论坛</a>
                 <a href="http://lhy.cpolar.top" target="_blank">老李论坛</a>
-                <a href="https://github.com/RLZFT8299/RLZFT8299-sever.date" target="_blank">GitHub主页</a>
+                <a href="https://github.com/RLZFT8299" target="_blank">GitHub主页</a>
                 <a href="https://minecraft.net" target="_blank">我的世界官网</a>
             </div>
             <div style="margin: 2rem 0;">
@@ -1311,8 +1310,8 @@
             });
         });
         
-        // 导航切换功能
-        document.querySelectorAll('.nav-links a, .footer-links a').forEach(link => {
+        // 导航链接点击事件
+        document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
@@ -1322,13 +1321,7 @@
                 });
                 
                 // 添加活动类到当前链接
-                if (this.dataset.section) {
-                    document.querySelectorAll('.nav-links a').forEach(item => {
-                        if (item.getAttribute('data-section') === this.getAttribute('data-section')) {
-                            item.classList.add('active');
-                        }
-                    });
-                }
+                this.classList.add('active');
                 
                 // 获取目标部分
                 const sectionId = this.getAttribute('data-section');
@@ -1337,6 +1330,37 @@
                 if (sectionId) {
                     showSection(sectionId);
                 }
+            });
+        });
+        
+        // 修复页脚链接点击事件
+        document.querySelectorAll('.footer-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // 检查是否有 data-section 属性（内部链接）
+                if (this.hasAttribute('data-section')) {
+                    e.preventDefault();
+                    
+                    // 获取目标部分
+                    const sectionId = this.getAttribute('data-section');
+                    
+                    // 移除所有活动的导航链接
+                    document.querySelectorAll('.nav-links a').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // 添加活动类到对应的导航链接
+                    document.querySelectorAll('.nav-links a').forEach(item => {
+                        if (item.getAttribute('data-section') === sectionId) {
+                            item.classList.add('active');
+                        }
+                    });
+                    
+                    // 显示目标部分
+                    if (sectionId) {
+                        showSection(sectionId);
+                    }
+                }
+                // 没有 data-section 属性的链接（外部链接）会正常跳转
             });
         });
         
